@@ -1,0 +1,10 @@
+.reddit-default-btn {
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #d3d3d3 !important;
+	border-radius: 2px !important;
+}
+
+.reddit-thread-btn {
+	background-color: #e5f2e5 !important;
+}

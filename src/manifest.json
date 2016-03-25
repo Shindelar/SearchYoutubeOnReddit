@@ -1,0 +1,17 @@
+{
+	"manifest_version" : 2,
+	"version" : "1.1",
+	"name" : "SearchYouTubeOnReddit",
+
+	"content_scripts" : [
+		{
+			"matches" : ["http://www.youtube.com/*", "https://www.youtube.com/*"],
+			"css" : ["button.css"],
+			"js" : ["redditsearch.js", "youtube.js"]
+		}
+	],
+
+	"permissions" : [
+		"https://reddit.com/*"
+	]
+}
