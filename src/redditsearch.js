@@ -65,7 +65,7 @@ function handleResponse(r) {
 
 		}
 	} else if(result.length == 1) {
-		btn.setAttribute('title', 'Reddit Thread');
+		btn.setAttribute('title', 'r/' + result[0].data.subreddit);
 		btn.onclick = function() { window.open('https://reddit.com' + result[0].data.permalink) };
 		btn.className += " reddit-thread-btn";
 	} else {
