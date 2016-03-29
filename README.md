@@ -1,4 +1,4 @@
-# SearchYoutubeOnReddit
+# rSlashTube
 Shows if youtube video was posted to reddit.
 
 Instructions on how to load an extension to Chrome are found here:
