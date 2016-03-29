@@ -55,7 +55,7 @@ function handleResponse(r) {
 
 			var menuItem = document.createElement('button');
 			menuItem.className = "yt-ui-menu-item yt-ui-menu-close-on-select";
-			menuItem.onclick = function() { window.open('https://reddit.com' + result[i].data.permalink) };
+			menuItem.setAttribute('onclick', permalink(result[i].data.permalink));
 			li.appendChild(menuItem);
 
 			var option = document.createElement('span');
@@ -77,5 +77,9 @@ function handleResponse(r) {
 		btn.className += " yt-uix-button-has-icon no-icon-markup action-panel-trigger-share";
 		btn.onclick = function() { window.open('https://reddit.com' + '/r/videos' + '/submit' + '?title=' + title + '&url=' + link)}
 		btn.setAttribute('title', 'Share on Reddit');
+	}
+
+	function permalink(param) {
+		return "window.open('https://reddit.com" + param + "')";
 	}
 }
