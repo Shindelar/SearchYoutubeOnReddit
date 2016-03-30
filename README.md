@@ -4,6 +4,9 @@ Shows if youtube video was posted to reddit.
 Instructions on how to load an extension to Chrome are found here:
 https://developer.chrome.com/extensions/getstarted#unpacked
 
+# Now on the chrome store:
+https://chrome.google.com/webstore/search/rSLashTube
+
 # How it works
 1. Go to https://www.youtube.com
 2. Click on any video
