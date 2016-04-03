@@ -5,6 +5,7 @@ function search() {
 	url = window.location.href;
 	url = url.split('v=');
 	url = url[1];
+	while(url.startsWith('-')) url = url.slice(1);
 
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() { handleStateChange(); }
