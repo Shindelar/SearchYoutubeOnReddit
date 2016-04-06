@@ -25,7 +25,7 @@ function handleResponse(r) {
 
 	date = Math.floor(Date.now() / 1000);
 	if(r[0]) { result = [r[0]]; } else { result = []; }
-	
+
 	for(var et in r) {
 		if(date - 7200 < r[et].data.created_utc || r[et].data.score > 300) {
 			try {

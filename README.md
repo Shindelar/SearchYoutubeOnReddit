@@ -5,7 +5,7 @@ Instructions on how to load an extension to Chrome are found here:
 https://developer.chrome.com/extensions/getstarted#unpacked
 
 # Now on the chrome store:
-https://chrome.google.com/webstore/search/rSLashTube
+https://chrome.google.com/webstore/search/rSlashTube
 
 # How it works
 1. Go to https://www.youtube.com
