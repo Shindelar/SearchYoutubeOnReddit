@@ -1,8 +1,6 @@
 var parent, container, btn, content;
 setInterval(function() {
 	if(document.getElementById('watch8-action-buttons') && document.getElementById('redditSearch') == null) {
-		search();
-
 		content = document.createElement('span');
 		content.className = "yt-uix-button-content";
 		content.innerHTML = 'Reddit Thread';
@@ -18,5 +16,7 @@ setInterval(function() {
 
 		parent = document.getElementById('watch8-secondary-actions');
 		parent.appendChild(container);
+
+		search();
 	}
 }, 100);
