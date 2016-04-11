@@ -76,7 +76,7 @@ function handleResponse(r) {
 		link = window.location.href;
 
 		btn.className += " yt-uix-button-has-icon no-icon-markup action-panel-trigger-share";
-		btn.onclick = function() { window.open('https://reddit.com' + '/r/videos' + '/submit' + '?title=' + title + '&url=' + link)}
+		btn.onclick = function() { window.open('https://reddit.com' + '/r/videos' + '/submit' + '?title=' + title + '&url=' + link)};
 		btn.setAttribute('title', 'Share on Reddit');
 	}
 
