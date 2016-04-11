@@ -1,6 +1,6 @@
 {
 	"manifest_version" : 2,
-	"version" : "1.0.7",
+	"version" : "1.0.8",
 	"name" : "rSlashTube",
 	"description" : "Links to the corresponding Reddit thread from YouTube.",
 
@@ -8,7 +8,8 @@
 		{
 			"matches" : ["http://www.youtube.com/*", "https://www.youtube.com/*"],
 			"css" : ["button.css"],
-			"js" : ["redditsearch.js", "youtube.js"]
+			"js" : ["redditsearch.js", "youtube.js"],
+			"run_at": "document_start"
 		}
 	],
 
