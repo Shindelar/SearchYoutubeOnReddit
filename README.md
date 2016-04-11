@@ -1,11 +1,13 @@
 # rSlashTube
-Shows if youtube video was posted to reddit.
+Links to the corresponding reddit thread from youtube.
 
-Instructions on how to load an extension to Chrome are found here:
-https://developer.chrome.com/extensions/getstarted#unpacked
+#Download from the chrome store:
 
-# Now on the chrome store:
 https://chrome.google.com/webstore/search/rSlashTube
+
+Or install on your own:
+
+https://developer.chrome.com/extensions/getstarted#unpacked
 
 # How it works
 1. Go to https://www.youtube.com
