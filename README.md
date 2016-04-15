@@ -1,7 +1,7 @@
 # rSlashTube
-Links to the corresponding reddit thread from youtube.
+Browse youtube and find the top reddit thread instantly.
 
-#Download from the chrome store:
+## Download from chrome store:
 
 https://chrome.google.com/webstore/search/rSlashTube
 
@@ -9,7 +9,7 @@ Or install on your own:
 
 https://developer.chrome.com/extensions/getstarted#unpacked
 
-# How it works
-1. Go to https://www.youtube.com
-2. Click on any video
-3. See below the video (above video description) if there was a thread posted on reddit
+## Features
+1. Finds top thread on reddit
+2. Lets you instantly share the video if it wasn't posted
+3. Integrated into youtube's UI
