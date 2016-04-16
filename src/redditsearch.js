@@ -9,6 +9,7 @@ function search() {
 
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() { handleStateChange(); }
+	xhttp.timeout = 4000;
 	xhttp.open('GET', 'https://www.reddit.com/search.json?q=url%3A' + url + '&sort=top&t=all&limit=3', true);
 	xhttp.send();
 }
