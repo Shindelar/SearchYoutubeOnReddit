@@ -1,5 +1,5 @@
 # rSlashTube
-Browse youtube and find the top reddit thread instantly.
+Chrome extension that allows you to find the top reddit thread to a youtube video instantly.
 
 ## Download from chrome store:
 
