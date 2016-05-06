@@ -1,4 +1,12 @@
-var parent, container, btn, content;
+// attributes of DOM elements
+var container = {
+		"class": "yt-uix-menu",
+		"id": "redditSearch" },
+	btn = {
+		"class": "yt-uix-button yt-uix-button-default yt-uix-tooltip reddit-default-btn" },
+	content = {
+		"class": "yt-uix-button-content"
+	}
 
 window.addEventListener('load', function() {
 	addBtn() }, false);
@@ -6,24 +14,14 @@ window.addEventListener('load', function() {
 document.addEventListener('spfdone', function() {
 	addBtn() }, false);
 
-function addBtn() {
-	if(document.getElementById('watch8-action-buttons')) {
-			content = document.createElement('span');
-			content.className = "yt-uix-button-content";
-			content.innerHTML = 'Reddit Thread';
+// appends button to youtube UI
+function addBtn(callback) {
+	var parent = document.getElementById('watch8-secondary-actions');
+	if(parent) {
+		parent.appendChild(create('div', container))
+			.appendChild(create('button', btn))
+			.appendChild(create('span', content, 'Reddit Thread'));
 
-			btn = document.createElement('button');
-			btn.className = "yt-uix-button yt-uix-button-default yt-uix-tooltip reddit-default-btn";
-			btn.appendChild(content);
-
-			container = document.createElement('div');
-			container.className = "yt-uix-menu";
-			container.id = "redditSearch";
-			container.appendChild(btn);
-
-			parent = document.getElementById('watch8-secondary-actions');
-			parent.appendChild(container);
-
-			search();
+		search();
 	}
 }

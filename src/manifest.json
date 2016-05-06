@@ -1,14 +1,14 @@
 {
 	"manifest_version" : 2,
-	"version" : "1.0.9",
-	"name" : "rSlashTube",
-	"description" : "Links to the corresponding Reddit thread from YouTube.",
+	"version" : "1.1.0",
+	"name" : "rSlashTubeDev",
+	"description" : "Links to the related Reddit thread from YouTube.",
 
 	"content_scripts" : [
 		{
-			"matches" : ["http://www.youtube.com/*", "https://www.youtube.com/*"],
+			"matches" : ["*://www.youtube.com/*"],
 			"css" : ["button.css"],
-			"js" : ["redditsearch.js", "youtube.js"],
+			"js" : ["functions.js", "redditsearch.js", "youtube.js"],
 			"run_at": "document_start"
 		}
 	],
