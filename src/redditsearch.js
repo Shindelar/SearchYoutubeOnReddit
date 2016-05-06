@@ -1,3 +1,4 @@
+// TODO
 var xhttp, url, response;
 var arrow, menu, ul;
 
@@ -23,6 +24,9 @@ function handleStateChange() {
 
 function handleResponse(r) {
 	var date, result;
+	// temp
+	var container = document.getElementById('redditSearch'),
+		btn = container.firstChild;
 
 	date = Math.floor(Date.now() / 1000);
 	if(r[0]) { result = [r[0]]; } else { result = []; }
