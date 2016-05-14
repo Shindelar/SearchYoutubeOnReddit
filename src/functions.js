@@ -11,7 +11,7 @@ var create = function (tagName, attributes, text) {
 Element.prototype.appendChildren = function(a) { a.forEach(e => {this.appendChild(e)}) };
 // send xmlhttp request
 var sendRequest = function (url, callback) {
-	xhttp = new XMLHttpRequest();
+	var xhttp = new XMLHttpRequest();
 	// handles state change
 	xhttp.onreadystatechange = function() {
 		if(xhttp.readyState == 4) callback(shorten(xhttp.response)); //handleResponse(response.data.children);
