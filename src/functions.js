@@ -30,17 +30,25 @@ var shorten = function(response) {
 				permalink: e.data.permalink,
 				subreddit: e.data.subreddit,
 				upvotes: e.data.score
-			})).filter((e,i,a) => duplicate(e,i,a,"subreddit"));
+			})).filter((e,i,a) => duplicate(e,i,a,"subreddit"))
+			.filter((e,i) => noUpvotes(e,i));
 		default:
 			return null;
 	}
 	function duplicate(element, index, array, key) {
+		// ignore first element
 		if(index) {
 			for(let i = 0; i < array.length; i++) {
 				if(array[i][key] === element[key] && i < index) {
 					return false;
 				}
 			}
+		}
+		return true;
+	}
+	function noUpvotes(element, index) {
+		if(index && element.upvotes < 300 && element.created_utc + 7200 < Date.now() / 1000) {
+			return false;
 		}
 		return true;
 	}
