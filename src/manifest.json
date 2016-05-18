@@ -1,8 +1,10 @@
 {
 	"manifest_version" : 2,
-	"version" : "1.1.2",
+	"version" : "1.1.4",
 	"name" : "rSlashTube",
 	"description" : "Links you to Reddit from a YouTube video.",
+	"icons": { "128": "rtube_128.png",
+				"48": "rtube_48.png"},
 
 	"content_scripts" : [
 		{
@@ -12,7 +14,7 @@
 			"run_at": "document_start"
 		}
 	],
-
+	
 	"permissions" : [
 		"https://reddit.com/*"
 	]

@@ -28,7 +28,8 @@ function addBtn() {
 }
 function handleResponse(response) {
 	var container = document.getElementById('redditSearch'),
-		btn = container.firstChild;
+		btn = container.firstChild,
+		title = document.getElementById('eow-title').innerHTML;
 	switch(response.length) {
 		case 3:
 		case 2:
@@ -54,8 +55,9 @@ function handleResponse(response) {
 			btn.firstChild.innerHTML = 'r/' + response[0].subreddit;
 			break;
 		default:
-			let title = document.getElementById('eow-title').innerHTML;
-			btn.setAttribute('onclick', permalink('/r/videos/submit?title=' + title, + '&url=' + window.location.href));
+			title = title.trim().replace(/&amp;/g, '&');
+			title = encodeURIComponent(title).replace("'", "%27");
+			btn.setAttribute('onclick', permalink('/r/videos/submit?title=' + title + '&url=' + window.location.href));
 			btn.className += " yt-uix-button-has-icon no-icon-markup action-panel-trigger-share";
 			btn.setAttribute('title', 'Share on Reddit');
 	}

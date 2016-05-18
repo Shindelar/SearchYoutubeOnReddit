@@ -14,7 +14,7 @@ var sendRequest = function (url, callback) {
 	var xhttp = new XMLHttpRequest();
 	// handles state change
 	xhttp.onreadystatechange = function() {
-		if(xhttp.readyState == 4) callback(shorten(xhttp.response)); //handleResponse(response.data.children);
+		if(xhttp.readyState == 4) callback(shorten(xhttp.response));
 	};
 	xhttp.responseType = "json";
 	xhttp.timeout = 4000;
