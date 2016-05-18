@@ -3,7 +3,7 @@ This is a chrome extension that links you to reddit from a youtube video.
 
 ## Download from chrome store:
 
-https://chrome.google.com/webstore/search/rSlashTube
+https://chrome.google.com/webstore/detail/rslashtube/nfgnnfofbienmmeeebaekpjhckpfinmj
 
 Or install on your own:
 
