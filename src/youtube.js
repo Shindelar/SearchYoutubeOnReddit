@@ -18,7 +18,7 @@ function addBtn() {
 	var parent = document.getElementById('watch8-secondary-actions'),
 		url = window.location.href;
 	if(parent) {
-		url = "https://www.reddit.com/search.json?q=url%3A" + url.split("v=")[1].replace(/^-*/, "") + "&sort=top&t=all&limit=3";
+		url = "https://www.reddit.com/search.json?q=url%3A" + url.split("v=")[1].replace(/^-*/, "") + "+site%3Ayoutube.com" + "&sort=top&t=all&limit=3";
 		parent.appendChild(create('div', container))
 			.appendChild(create('button', btn))
 			.appendChild(create('span', content, 'Reddit Thread'));
