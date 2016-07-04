@@ -1,7 +1,8 @@
 // return DOM element given the parameters
 var create = function (tagName, attributes, text) {
-	var element = document.createElement(tagName);
-	for(var key in attributes) {
+	var element = document.createElement(tagName),
+		key;
+	for(key in attributes) {
 		element.setAttribute(key, attributes[key]);
 	}
 	if(text) element.innerHTML = text;
@@ -9,6 +10,24 @@ var create = function (tagName, attributes, text) {
 }
 // append children given an array
 Element.prototype.appendChildren = function(a) { a.forEach(e => {this.appendChild(e)}) };
+// get video id
+var getVideoId = function(url) {
+	var id = "";
+
+	if(url.match(/youtu.be/)) {
+		id = url.replace(/.*youtu.be\//, "")
+			.replace(/\?.*/, "")
+			.replace(/^-*/, "")
+			.replace(/\//g, "");
+	} else if(url.match(/youtube.com/)) {
+		url = url.replace(/.*\?/, "")
+			.replace(/\//g, "")
+			.split(/&/);
+		url.forEach(e => { if(e.match(/^v=/)) id = e.replace(/^v=-*/, "")});
+	}
+
+	return id;
+}
 // send xmlhttp request
 var sendRequest = function (url, callback) {
 	var xhttp = new XMLHttpRequest();
@@ -17,6 +36,7 @@ var sendRequest = function (url, callback) {
 		if(xhttp.readyState == 4) callback(shorten(xhttp.response));
 	};
 	xhttp.responseType = "json";
+	// timeout in case of bad connection
 	xhttp.timeout = 4000;
 	xhttp.open('GET', url, true);
 	xhttp.send();
@@ -36,9 +56,10 @@ var shorten = function(response) {
 			return null;
 	}
 	function duplicate(element, index, array, key) {
+		var i;
 		// ignore first element
 		if(index) {
-			for(let i = 0; i < array.length; i++) {
+			for(i = 0; i < array.length; i++) {
 				if(array[i][key] === element[key] && i < index) {
 					return false;
 				}

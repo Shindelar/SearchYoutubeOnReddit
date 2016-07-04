@@ -16,14 +16,15 @@ document.addEventListener('spfdone', function() {
 // appends button to youtube UI
 function addBtn() {
 	var parent = document.getElementById('watch8-secondary-actions'),
-		url = window.location.href;
+		url = window.location.href,
+		request;
 	if(parent) {
-		url = "https://www.reddit.com/search.json?q=url%3A" + url.split("v=")[1].replace(/^-*/, "") + "+site%3Ayoutube.com" + "&sort=top&t=all&limit=3";
+		request = "https://www.reddit.com/search.json?q=url%3A" + getVideoId(url) + "+site%3Ayoutube.com" + "&sort=top&t=all&limit=3";
 		parent.appendChild(create('div', container))
 			.appendChild(create('button', btn))
 			.appendChild(create('span', content, 'Reddit Thread'));
 
-		sendRequest(url, handleResponse);
+		sendRequest(request, handleResponse);
 	}
 }
 function handleResponse(response) {
