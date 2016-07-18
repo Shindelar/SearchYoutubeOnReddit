@@ -14,16 +14,16 @@ Element.prototype.appendChildren = function(a) { a.forEach(e => {this.appendChil
 var getVideoId = function(url) {
 	var id = "";
 
-	if(url.match(/youtu.be/)) {
-		id = url.replace(/.*youtu.be\//, "")
-			.replace(/\?.*/, "")
-			.replace(/^-*/, "")
-			.replace(/\//g, "");
-	} else if(url.match(/youtube.com/)) {
+	if(url.match(/v=/)) {
 		url = url.replace(/.*\?/, "")
 			.replace(/\//g, "")
 			.split(/&/);
 		url.forEach(e => { if(e.match(/^v=/)) id = e.replace(/^v=-*/, "")});
+	} else if(url.match(/youtu.be/)) {
+		id = url.replace(/.*youtu.be\//, "")
+			.replace(/\?.*/, "")
+			.replace(/^-*/, "")
+			.replace(/\//g, "");
 	}
 
 	return id;

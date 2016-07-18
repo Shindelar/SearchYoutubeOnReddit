@@ -19,7 +19,7 @@ function addBtn() {
 		url = window.location.href,
 		request;
 	if(parent) {
-		request = "https://www.reddit.com/search.json?q=url%3A" + getVideoId(url) + "+site%3Ayoutube.com" + "&sort=top&t=all&limit=3";
+		request = "https://www.reddit.com/search.json?q=url%3A" + getVideoId(url) + "+site%3A%28youtube.com+OR+youtu.be%29" + "&sort=top&t=all&limit=3";
 		parent.appendChild(create('div', container))
 			.appendChild(create('button', btn))
 			.appendChild(create('span', content, 'Reddit Thread'));
