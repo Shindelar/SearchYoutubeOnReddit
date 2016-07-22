@@ -17,9 +17,12 @@ document.addEventListener('spfdone', function() {
 function addBtn() {
 	var parent = document.getElementById('watch8-secondary-actions'),
 		url = window.location.href,
+		videoId = getVideoId(url),
 		request;
 	if(parent) {
-		request = "https://www.reddit.com/search.json?q=url%3A" + getVideoId(url) + "+site%3A%28youtube.com+OR+youtu.be%29" + "&sort=top&t=all&limit=3";
+		request = "https://www.reddit.com/search.json?q=" +
+			encodeURIComponent("url:(" + videoId + " OR u=%2Fwatch%3Fv%3D" + videoId + ") site:(youtube.com OR youtu.be)") +
+			"&sort=top&t=all&limit=3";
 		parent.appendChild(create('div', container))
 			.appendChild(create('button', btn))
 			.appendChild(create('span', content, 'Reddit Thread'));
@@ -58,7 +61,7 @@ function handleResponse(response) {
 		default:
 			title = title.trim().replace(/&amp;/g, '&');
 			title = encodeURIComponent(title).replace("'", "%27");
-			btn.setAttribute('onclick', permalink('/submit?title=' + title + '&url=' + window.location.href));
+			btn.setAttribute('onclick', permalink('/submit?title=' + title + '&url=' + encodeURIComponent(window.location.href)));
 			btn.className += " yt-uix-button-has-icon no-icon-markup action-panel-trigger-share";
 			btn.setAttribute('title', 'Share on Reddit');
 	}
