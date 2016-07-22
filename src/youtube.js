@@ -24,7 +24,7 @@ function addBtn() {
 			.appendChild(create('button', btn))
 			.appendChild(create('span', content, 'Reddit Thread'));
 
-		sendRequest(request, handleResponse);
+		sendRequest(request, handleResponse, true);
 	}
 }
 function handleResponse(response) {
@@ -58,7 +58,7 @@ function handleResponse(response) {
 		default:
 			title = title.trim().replace(/&amp;/g, '&');
 			title = encodeURIComponent(title).replace("'", "%27");
-			btn.setAttribute('onclick', permalink('/r/videos/submit?title=' + title + '&url=' + window.location.href));
+			btn.setAttribute('onclick', permalink('/submit?title=' + title + '&url=' + window.location.href));
 			btn.className += " yt-uix-button-has-icon no-icon-markup action-panel-trigger-share";
 			btn.setAttribute('title', 'Share on Reddit');
 	}

@@ -29,15 +29,21 @@ var getVideoId = function(url) {
 	return id;
 }
 // send xmlhttp request
-var sendRequest = function (url, callback) {
+var sendRequest = function (url, callback, first) {
 	var xhttp = new XMLHttpRequest();
 	// handles state change
 	xhttp.onreadystatechange = function() {
-		if(xhttp.readyState == 4) callback(shorten(xhttp.response));
+		if(xhttp.readyState == 4) {
+			if(xhttp.status == 200) {
+				callback(shorten(xhttp.response));
+			} else if(first) {
+				window.setTimeout(function() { sendRequest(url, callback, false) }, 10000);
+			}
+		}
 	};
 	xhttp.responseType = "json";
 	// timeout in case of bad connection
-	xhttp.timeout = 4000;
+	xhttp.timeout = 7000;
 	xhttp.open('GET', url, true);
 	xhttp.send();
 }
