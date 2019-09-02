@@ -1,21 +1,26 @@
 // attributes of DOM elements
 var container = {
-		"class": "yt-uix-menu",
-		"id": "redditSearch" },
+		'id': 'rst-button',
+		'class': 'rst-info-renderer' },
+	renderer = {
+		'class': '' },
 	btn = {
-		"class": "yt-uix-button yt-uix-button-default yt-uix-tooltip reddit-default-btn" },
-	content = {
-		"class": "yt-uix-button-content" };
+		'noink': '',
+		'class': 'style-scope ytd-subscribe-button-renderer',
+		'role': 'button',
+		'tabindex': '0',
+		'animated': '',
+		'elevation': '0',
+		'aria-disabled': 'false',
+		'subscribed': '',
+		'aria-label': ''};
 
-window.addEventListener('load', function() {
-	addBtn() }, false);
-
-document.addEventListener('spfdone', function() {
+document.addEventListener('yt-page-data-updated', function() {
 	addBtn() }, false);
 
 // appends button to youtube UI
 function addBtn() {
-	var parent = document.getElementById('watch8-secondary-actions'),
+	var parent = document.querySelector('ytd-video-owner-renderer'),
 		url = window.location.href,
 		videoId = getVideoId(url),
 		request;
@@ -23,47 +28,37 @@ function addBtn() {
 		request = "https://www.reddit.com/search.json?q=" +
 			encodeURIComponent("url:(" + videoId + " OR u=%2Fwatch%3Fv%3D" + videoId + ") site:(youtube.com OR youtu.be)") +
 			"&sort=top&t=all&limit=3";
-		parent.appendChild(create('div', container))
-			.appendChild(create('button', btn))
-			.appendChild(create('span', content, 'Reddit Thread'));
+		
+		if(document.querySelector('ytd-video-owner-renderer #rst-button')) {
+			document.querySelector('ytd-video-owner-renderer #rst-button').remove();
+		}
 
+		parent.insertBefore(createDOMElement('div', container), document.querySelector('div#meta div#sponsor-button'))
+				.appendChild(createDOMElement('rst-button-renderer', renderer))
+				.appendChild(createDOMElement('paper-button', btn, 'Reddit'));
+		
 		sendRequest(request, handleResponse, true);
 	}
 }
 function handleResponse(response) {
-	var container = document.getElementById('redditSearch'),
-		btn = container.firstChild,
-		title = document.getElementById('eow-title').innerHTML;
+	let btn = document.querySelector('div#rst-button paper-button');
+	let title = document.querySelector('div#info h1.title').innerText;
+
 	switch(response.length) {
 		case 3:
 		case 2:
-			btn.className += " yt-uix-menu-trigger";
-			btn.appendChild(create('span', {"class": "yt-uix-button-arrow yt-sprite" }));
-			container.appendChild(create('div',
-					{'class': 'yt-uix-menu-content yt-ui-menu-content yt-uix-kdb-nav yt-uix-menu-hidden yt-uix-kbd-nav yt-uix-menu-content-hidden'}))
-				.appendChild(create('ul'))
-				.appendChildren(
-					response.map(e => {
-						var element =  create('li');
-						element.appendChild(create('button', {'class': 'yt-ui-menu-item yt-ui-menu-close-on-select',
-								'onclick': permalink(e.permalink)}))
-							.appendChild(create('span', {'class': 'yt-ui-menu-item-label'},
-								'r/' + e.subreddit + ', ' + e.upvotes));
-						return element;
-					})
-				);
-			break;
 		case 1:
 			btn.setAttribute('onclick', permalink(response[0].permalink));
-			btn.setAttribute('title', 'r/' + response[0].subreddit);
-			btn.firstChild.innerHTML = 'r/' + response[0].subreddit;
+			btn.setAttribute('title', `r/${response[0].subreddit}`);
+			btn.innerText = `r/${response[0].subreddit} (${response[0].upvotes})`;
 			break;
 		default:
 			title = title.trim().replace(/&amp;/g, '&');
 			title = encodeURIComponent(title).replace("'", "%27");
 			btn.setAttribute('onclick', permalink('/submit?title=' + title + '&url=' + encodeURIComponent(window.location.href)));
-			btn.className += " yt-uix-button-has-icon no-icon-markup action-panel-trigger-share";
 			btn.setAttribute('title', 'Share on Reddit');
+			btn.innerText = 'Reddit';
+			
 	}
 	function permalink(v) {
 		return "window.open('https://reddit.com" + v + "')";

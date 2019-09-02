@@ -1,5 +1,5 @@
 // return DOM element given the parameters
-var create = function (tagName, attributes, text) {
+var createDOMElement = function (tagName, attributes, text) {
 	var element = document.createElement(tagName),
 		key;
 	for(key in attributes) {

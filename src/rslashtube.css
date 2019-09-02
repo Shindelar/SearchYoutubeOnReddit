@@ -1,0 +1,27 @@
+#rst-button.rst-info-renderer {
+	display: flex;
+	-ms-flex-direction: column;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+
+/*
+rst-button-renderer {
+	--yt-formatted-string-deemphasize-color: #FFFFFF;
+    --yt-formatted-string-deemphasize_-_margin-left: 4px;
+    --yt-formatted-string-deemphasize_-_display: initial;
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+.rx-default-btn {
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #d3d3d3 !important;
+	border-radius: 2px !important;
+}
+*/
