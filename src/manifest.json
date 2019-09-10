@@ -17,5 +17,6 @@
 	
 	"permissions" : [
 		"https://reddit.com/*"
-	]
+	],
+	"short_name": "rSlashTube"
 }
