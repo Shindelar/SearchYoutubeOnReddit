@@ -15,6 +15,12 @@ var container = {
 		'subscribed': '',
 		'aria-label': ''};
 
+var _listener = function(permalink) {
+	return () => { 
+		window.open(`https://reddit.com${permalink}`);
+	}
+}
+
 document.addEventListener('yt-page-data-updated', function() {
 	addBtn() }, false);
 
@@ -48,19 +54,16 @@ function handleResponse(response) {
 		case 3:
 		case 2:
 		case 1:
-			btn.setAttribute('onclick', permalink(response[0].permalink));
+			btn.addEventListener('click', _listener(response[0].permalink));
 			btn.setAttribute('title', `r/${response[0].subreddit}`);
 			btn.innerText = `r/${response[0].subreddit} (${response[0].upvotes})`;
 			break;
 		default:
 			title = title.trim().replace(/&amp;/g, '&');
 			title = encodeURIComponent(title).replace("'", "%27");
-			btn.setAttribute('onclick', permalink('/submit?title=' + title + '&url=' + encodeURIComponent(window.location.href)));
+
+			btn.addEventListener('click', _listener(`/submit?title=${title}&url=${encodeURIComponent(window.location.href)}`));
 			btn.setAttribute('title', 'Share on Reddit');
 			btn.innerText = 'Reddit';
-			
-	}
-	function permalink(v) {
-		return "window.open('https://reddit.com" + v + "')";
 	}
 }
