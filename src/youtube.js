@@ -41,13 +41,13 @@ function addBtn() {
 
 		parent.insertBefore(createDOMElement('div', container), document.querySelector('div#meta div#sponsor-button'))
 				.appendChild(createDOMElement('rst-button-renderer', renderer))
-				.appendChild(createDOMElement('paper-button', btn, 'Reddit'));
+				.appendChild(createDOMElement('tp-yt-paper-button', btn, 'Reddit'));
 		
 		sendRequest(request, handleResponse, true);
 	}
 }
 function handleResponse(response) {
-	let btn = document.querySelector('div#rst-button paper-button');
+	let btn = document.querySelector('div#rst-button tp-yt-paper-button');
 	let title = document.querySelector('div#info h1.title').innerText;
 
 	switch(response.length) {
