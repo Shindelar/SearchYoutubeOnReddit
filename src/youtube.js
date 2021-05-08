@@ -26,7 +26,8 @@ document.addEventListener('yt-page-data-updated', function() {
 
 // appends button to youtube UI
 function addBtn() {
-	var parent = document.querySelector('ytd-video-owner-renderer'),
+	const parentSelector = 'ytd-video-secondary-info-renderer ytd-video-owner-renderer';
+	var parent = document.querySelector(parentSelector),
 		url = window.location.href,
 		videoId = getVideoId(url),
 		request;
@@ -35,8 +36,8 @@ function addBtn() {
 			encodeURIComponent("url:(" + videoId + " OR u=%2Fwatch%3Fv%3D" + videoId + ") site:(youtube.com OR youtu.be)") +
 			"&sort=top&t=all&limit=3";
 		
-		if(document.querySelector('ytd-video-owner-renderer #rst-button')) {
-			document.querySelector('ytd-video-owner-renderer #rst-button').remove();
+		if(document.querySelector(parentSelector + ' #rst-button')) {
+			document.querySelector(parentSelector + ' #rst-button').remove();
 		}
 
 		parent.insertBefore(createDOMElement('div', container), document.querySelector('div#meta div#sponsor-button'))
